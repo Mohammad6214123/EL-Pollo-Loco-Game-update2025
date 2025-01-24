@@ -1,6 +1,6 @@
 class MoveableObject {
        x = 250;               // global variables
-       y = 120;
+       y = 190;
        img;                     
        height =  150;
        width =   100;
