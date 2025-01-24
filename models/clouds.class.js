@@ -2,6 +2,7 @@ class Cloud extends MoveableObject {
    x = 50;
     width = 300;
     height = 200;
+    
 
     constructor() {
         super().loadImge('img/5_background/layers/4_clouds/1.png');// this is clouds image.
@@ -12,12 +13,10 @@ class Cloud extends MoveableObject {
      }
 
      animate(){
-     setInterval(()=>{
-      this.x -=5;
-
-     },1000);
-
+     this.moveLeft();
       
 
      }
+
+    
 }
