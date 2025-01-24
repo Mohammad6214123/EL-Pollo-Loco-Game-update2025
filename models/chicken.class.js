@@ -1,6 +1,6 @@
 class chicken extends MoveableObject{
     y = 5;
-    
+    x = 280;
     constructor() {
         super().loadImge('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');// this is chicken image.
 
