@@ -2,6 +2,7 @@ class Character extends MoveableObject {
    
     height = 350;
    x = 100;
+   speed =10;
    IMAGES_WALKING =[
     'img/2_character_pepe/2_walk/W-21.png',
     'img/2_character_pepe/2_walk/W-22.png',
@@ -21,15 +22,33 @@ class Character extends MoveableObject {
         }
 
         animate(){
-            setInterval( () => {
+            setInterval(() => {
+                if(this.world.keyboard.RIGHT) {
+                    this.y += this.speed;
+                    this.otherDirection = false;
+                }
+
+                if(this.world.keyboard.LEFT) {
+                    this.y -= this.speed;
+                    this.otherDirection = true;
+                }
+
+            },1000/60);
+        
+
+            setInterval(() => {
+                if (this.world.keyboard.RIGHT ||  this.world.keyboard.LEFT) {  
+                    this.y += this.speed; // Move Pepe to the right only when the right arrow key is pressed.
             
-            if(this.world.keyboard.RIGHT) {  
-           let i = this.currentImage % this.IMAGES_WALKING.length;  // let i = 0 % 6; 0; Rest = 0 .  
-           let path = this.IMAGES_WALKING[i];
-            this.img = this.imgeCache[path];
-            this.currentImage++;
-            }
-        },1000/10);
+                    // Handle walk animation
+                    let i = this.currentImage % this.IMAGES_WALKING.length;  
+                    let path = this.IMAGES_WALKING[i];
+                    this.img = this.imgeCache[path];
+                    this.currentImage++;
+                
+                }
+            }, 50);
+        
 
         }
 

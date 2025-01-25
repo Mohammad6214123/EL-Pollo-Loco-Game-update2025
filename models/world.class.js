@@ -57,7 +57,19 @@ class World {
      }
 
     addToMap(mo){
+      if(mo.otherDirection){
+        this.ctx.save();
+        this.ctx.translate(mo.width, 0);
+        this.ctx.scale(-1, 1);
+        mo.y = mo.y * -1;
+
+      }
+
       this.ctx.drawImage(mo.img,mo.y,mo.x,mo.width,mo.height);
+      if(mo.otherDirection){
+        mo.y = mo.y * -1;
+        this.ctx.restore();
+      }
     }
 }
 
