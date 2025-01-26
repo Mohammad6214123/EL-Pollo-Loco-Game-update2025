@@ -14,12 +14,25 @@ class World {
        this.keyboard = keyboard;
        this.draw();
        this.setWorld();
+       this.checkCollision();
        
    }
 
     setWorld(){
       this.character.world = this;
     }
+  
+   checkCollision(){
+    setInterval(() => {
+      this.level.enemies.forEach((enemy) => {
+     if (this.character.isColliding(enemy)){
+        console.log('collision with character ', enemy);
+     }
+      });
+
+    }, 1000);
+   }
+
 
 
    draw() {
