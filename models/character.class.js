@@ -26,14 +26,25 @@ class Character extends MoveableObject {
 
  ];
 
+ IMAGES_DEAD = [                                                               // here we are defining 
+    'img/2_character_pepe/5_dead/D-51.png',
+    'img/2_character_pepe/5_dead/D-52.png',
+    'img/2_character_pepe/5_dead/D-53.png',
+    'img/2_character_pepe/5_dead/D-54.png',
+    'img/2_character_pepe/5_dead/D-55.png',
+    'img/2_character_pepe/5_dead/D-56.png',
+    'img/2_character_pepe/5_dead/D-57.png'
 
+
+ ];
 
  world;
 
      constructor() {
         super().loadImge('img/2_character_pepe/2_walk/W-21.png'); // this is pepe image
         this.loadImges(this.IMAGES_WALKING);
-        this.loadImges(this.IMAGES_JUMPING);
+        this.loadImges(this.IMAGES_JUMPING);                                // here we are loading the bottom function 
+        this.loadImges(this.IMAGES_DEAD);
            this.applyGravity();
             this.animate();
         }
@@ -64,8 +75,10 @@ class Character extends MoveableObject {
 
             setInterval(() => {
 
-
-              if(this.isAboveGround()){
+              if(this.isDead()){
+                this.playAnimation(this.IMAGES_DEAD);     
+              
+              } else if(this.isAboveGround()){
                 this.playAnimation(this.IMAGES_JUMPING);
               } else{
 
