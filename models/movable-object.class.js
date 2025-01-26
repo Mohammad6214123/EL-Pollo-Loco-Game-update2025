@@ -1,6 +1,6 @@
 class MoveableObject {
-       x = 250;               // global variables
-       y = 190;
+       x = 120;               // global variables
+       y = 280;
        img;                     
        height =  150;
        width =   100;
@@ -36,7 +36,7 @@ class MoveableObject {
 
        moveLeft(){
         setInterval(()=>{
-          this.y -= this.speed;
+          this.x -= this.speed;
     
          },1000/60);
        }
