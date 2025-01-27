@@ -1,7 +1,7 @@
 class Character extends MoveableObject {
    
    height =250;
-   y = 80;     // this y is for the pepe.
+    y = 80;     // this y is for the pepe.
    speed =10;
    IMAGES_WALKING =[
     'img/2_character_pepe/2_walk/W-21.png',
@@ -57,8 +57,9 @@ class Character extends MoveableObject {
         super().loadImge('img/2_character_pepe/2_walk/W-21.png'); // this is pepe image
         this.loadImges(this.IMAGES_WALKING);
         this.loadImges(this.IMAGES_JUMPING);                                // here we are loading the bottom function 
-        this.loadImges(this.IMAGES_DEAD);
+        this.loadImges(this.IMAGES_DEAD);                                   // here we want to run our functins.
         this.loadImges(this.IMAGES_HURT);
+        
            this.applyGravity();
             this.animate();
         }
@@ -68,7 +69,7 @@ class Character extends MoveableObject {
                 if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                    this.moveRight();
                    this.otherDirection = false;
-                  // this.walking_sound.play();
+                   //this.walking_sound.play();
                 }
 
                 if(this.world.keyboard.LEFT && this.x > 0) {
@@ -83,7 +84,7 @@ class Character extends MoveableObject {
                     this.jump();    
                 }
 
-                this.world.camera_x = -this.x + 100;
+                this.world.camera_x = -this.x + 100
             },1000/60);
         
 
@@ -98,13 +99,13 @@ class Character extends MoveableObject {
               }else if(this.isAboveGround()){
                 this.playAnimation(this.IMAGES_JUMPING);
               } else{
-                if (this.world.keyboard.RIGHT ||  this.world.keyboard.LEFT) {  
+                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {  
                     // Handle walk animation
                    this.playAnimation(this.IMAGES_WALKING);
                 }
             }
             }, 50);
-        
+
 
         }
 
