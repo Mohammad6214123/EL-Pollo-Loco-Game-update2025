@@ -22,7 +22,7 @@ class Character extends MoveableObject {
     'img/2_character_pepe/3_jump/J-36.png',
     'img/2_character_pepe/3_jump/J-37.png',
     'img/2_character_pepe/3_jump/J-38.png',
-    'img/2_character_pepe/3_jump/J-39.png',
+    'img/2_character_pepe/3_jump/J-39.png'
 
  ];
 
@@ -38,13 +38,27 @@ class Character extends MoveableObject {
 
  ];
 
+ IMAGES_HURT = [
+    'img/2_character_pepe/4_hurt/H-41.png',
+    'img/2_character_pepe/4_hurt/H-42.png',
+    'img/2_character_pepe/4_hurt/H-43.png'
+ ];
+
+
+
+
+
+
+
  world;
+ //walking_sound = new Audio ('audio/running.pm3');
 
      constructor() {
         super().loadImge('img/2_character_pepe/2_walk/W-21.png'); // this is pepe image
         this.loadImges(this.IMAGES_WALKING);
         this.loadImges(this.IMAGES_JUMPING);                                // here we are loading the bottom function 
         this.loadImges(this.IMAGES_DEAD);
+        this.loadImges(this.IMAGES_HURT);
            this.applyGravity();
             this.animate();
         }
@@ -78,13 +92,13 @@ class Character extends MoveableObject {
               if(this.isDead()){
                 this.playAnimation(this.IMAGES_DEAD);     
               
-              } else if(this.isAboveGround()){
+              } else if (this.isHurt()){
+                this.playAnimation(this.IMAGES_HURT); 
+
+              }else if(this.isAboveGround()){
                 this.playAnimation(this.IMAGES_JUMPING);
               } else{
-
                 if (this.world.keyboard.RIGHT ||  this.world.keyboard.LEFT) {  
-                    
-            
                     // Handle walk animation
                    this.playAnimation(this.IMAGES_WALKING);
                 }

@@ -6,12 +6,12 @@ class MoveableObject {
        width =   100;
        imgeCache = {};
        currentImage = 0;
-       speed = 0.15;
+       speed = 0.15;                         // these are variables which we have already defined.
        otherDirection = false;
        speedY = 0;
        acceleration = 2.5;
        energy = 100;
-
+       lastHit = 0;
 
 
 
@@ -64,10 +64,16 @@ class MoveableObject {
         this.energy -=5;
         if(this.energy < 0){
            this.energy = 0;
+        } else{
+             this.lastHit = new Date().getTime();
         }
-       }
+       };
        
-
+       isHurt(){
+             let timepassed = new Date().getTime() - this.lastHit; // Difference in millie seconds.
+             timepassed = timepassed /1000;                         // Difference in millie seconds.                                   
+             return timepassed < 1;
+       }
 
        isDead(){
         return this.energy == 0;
@@ -90,7 +96,7 @@ class MoveableObject {
 
        }
          playAnimation(images){
-          let i = this.currentImage % this.IMAGES_WALKING.length;
+          let i = this.currentImage % images.length;
           let path = images[i];
           this.img = this.imgeCache[path];
           this.currentImage++;
