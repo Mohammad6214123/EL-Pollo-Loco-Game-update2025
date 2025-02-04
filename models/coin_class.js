@@ -1,8 +1,8 @@
 class coin extends MoveableObject{
     x = 200;
     y = 150;
-    width =80;
-    height =80;
+    width = 140;
+    height = 140;
     coin_sound = new Audio('');
 
     // Initialize the coin with a random position and loads its image.

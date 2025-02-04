@@ -8,8 +8,6 @@ class World {
     statusBar = new StatusBar();
     coinBar   = new coinBar();
     bottleBar = new bottleBar();
-    
-    
     throwableObject = [];
     
    
@@ -32,6 +30,7 @@ class World {
         this.checkCollisions();
         this.checkThrowObject();
         this.checkCoinCollection();
+      
     }, 1000);
    }
 
@@ -45,14 +44,14 @@ class World {
     });
 }
 
-// checkBottleCollection() {
-//   this.level.bottles.forEach((bottle, index) => {
-//       if (this.character.isColliding(bottle)) {
-//           this.level.bottles.splice(index, 1);  // Remove the collected bottle from the level
-//           this.bottleBar.increaseBottles();  // Increase the bottle count on the bottle bar
-//       }
-//   });
-// }
+checkBottleCollection() {
+  this.level.bottles.forEach((bottle, index) => {
+      if (this.character.isColliding(bottle)) {
+          this.level.bottles.splice(index, 1);  // Remove the collected bottle from the level
+          this.bottleBar.increaseBottles();  // Increase the bottle count on the bottle bar
+      }
+  });
+}
 
      checkThrowObject(){
        if(this.keyboard.D){
@@ -90,6 +89,7 @@ class World {
      this.addObjectsToMap(this.level.enemies);
      this.addObjectsToMap(this.throwableObject);
      this.addObjectsToMap(this.level.coins);
+    this.addObjectsToMap(this.level.bottle);
      this.ctx.translate(-this.camera_x,0);
 
      
