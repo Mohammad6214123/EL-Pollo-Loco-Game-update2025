@@ -29,13 +29,22 @@ class World {
   
    run(){
     setInterval(() => {
-
-
-      
         this.checkCollisions();
         this.checkThrowObject();
+        this.checkCoinCollection();
     }, 1000);
    }
+
+   checkCoinCollection() {
+    this.level.coins.forEach((coin, index) => {
+        if (this.character.isColliding(coin)) {
+            coin.playCollectCoinAudio();  // Play the sound when the coin is collected
+            this.level.coins.splice(index, 1);  // Remove the collected coin from the level
+            this.coinBar.increaseCoins();  // Increase the coin count on the coin bar
+        }
+    });
+}
+
 
      checkThrowObject(){
        if(this.keyboard.D){
@@ -64,7 +73,6 @@ class World {
      this.ctx.translate(-this.camera_x,0);
      this.addToMap(this.statusBar);
      this.addToMap(this.coinBar);
-     console.log(this.bottleBar);
      this.addToMap(this.bottleBar);
      this.ctx.translate(this.camera_x,0);
 
@@ -73,6 +81,7 @@ class World {
      this.addObjectsToMap(this.level.clouds);
      this.addObjectsToMap(this.level.enemies);
      this.addObjectsToMap(this.throwableObject);
+     this.addObjectsToMap(this.level.coins);
      this.ctx.translate(-this.camera_x,0);
 
 
