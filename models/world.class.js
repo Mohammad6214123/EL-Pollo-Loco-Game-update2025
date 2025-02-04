@@ -45,6 +45,14 @@ class World {
     });
 }
 
+// checkBottleCollection() {
+//   this.level.bottles.forEach((bottle, index) => {
+//       if (this.character.isColliding(bottle)) {
+//           this.level.bottles.splice(index, 1);  // Remove the collected bottle from the level
+//           this.bottleBar.increaseBottles();  // Increase the bottle count on the bottle bar
+//       }
+//   });
+// }
 
      checkThrowObject(){
        if(this.keyboard.D){
@@ -84,7 +92,7 @@ class World {
      this.addObjectsToMap(this.level.coins);
      this.ctx.translate(-this.camera_x,0);
 
-
+     
      
       // the draw method will be repeteadly calls.
       let self = this;

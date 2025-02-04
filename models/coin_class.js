@@ -1,6 +1,6 @@
 class coin extends MoveableObject{
-    x = 150;
-    y = 120;
+    x = 200;
+    y = 150;
     width =80;
     height =80;
     coin_sound = new Audio('');
