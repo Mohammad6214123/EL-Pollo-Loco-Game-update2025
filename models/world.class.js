@@ -8,7 +8,7 @@ class World {
     statusBar = new StatusBar();
     coinBar   = new coinBar();
     bottleBar = new bottleBar();
-
+    
     
     throwableObject = [];
     
