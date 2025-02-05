@@ -53,7 +53,7 @@ class World {
 
 // Checks all collision types within the game world.
 checkCollisions() {
-this.checkCoinCollection();
+this.checkCoinCollection(); 
   
   
 }
