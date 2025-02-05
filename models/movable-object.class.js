@@ -5,7 +5,7 @@ class MoveableObject extends DrawableObject{
        acceleration = 2.5;
        energy = 100;
        lastHit = 0;
-
+       
 
 
        applyGravity(){
@@ -28,8 +28,6 @@ class MoveableObject extends DrawableObject{
          
        }
 
-        
-       
       
        // character.isColliding(chicken)
        isColliding(mo){
