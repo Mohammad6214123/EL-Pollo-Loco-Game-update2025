@@ -64,6 +64,17 @@ class Character extends MoveableObject {
             this.animate();
         }
 
+        isJumpingOn(mo) {
+         return (
+             this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
+             this.y + this.height - this.offset.bottom < mo.y + mo.offset.top + mo.height &&
+             this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+             this.x + this.offset.left < mo.x + mo.width - mo.offset.right  // I added this code.
+         );
+     }
+ 
+
+
         animate(){
             setInterval(() => {
                 if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
