@@ -9,7 +9,7 @@ class World {
     coinBar   = new coinBar();
     bottleBar = new bottleBar();
     throwableObject = [];
-    
+  
    
    constructor(canvas,keyboard){
        this.ctx = canvas.getContext("2d");
@@ -29,47 +29,54 @@ class World {
     setInterval(() => {
         this.checkCollisions();
         this.checkThrowObject();
-        this.checkCoinCollection();
-      
     }, 1000);
    }
 
+   checkThrowObject(){
+    if(this.keyboard.D){
+     let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+     this.throwableObject.push(bottle);
+    }
+  }
+
+ checkCollisions(){
+   this.level.enemies.forEach((enemy) => {
+     if (this.character.isColliding(enemy)){
+        this.character.hit();
+        this.statusBar.setPercentage(this.character.energy);
+       
+     }
+      });
+
+ }
+
+
+// Checks all collision types within the game world.
+checkCollisions() {
+this.checkCoinCollection();
+  
+  
+}
+
    checkCoinCollection() {
     this.level.coins.forEach((coin, index) => {
-        if (this.character.isColliding(coin)) {
-            coin.playCollectCoinAudio();  // Play the sound when the coin is collected
-            this.level.coins.splice(index, 1);  // Remove the collected coin from the level
-            this.coinBar.increaseCoins();  // Increase the coin count on the coin bar
+        if (this.character.isColliding(coin)) { // Remove the collected coin from the level
+            this.level.coins.splice(index, 1);      // Increase the coin count on the coin bar    
+            this.coinBar.increaseCoins();
         }
     });
 }
 
+
 checkBottleCollection() {
-  this.level.bottles.forEach((bottle, index) => {
+  this.level.Bottles.forEach((bottle, index) => {   
       if (this.character.isColliding(bottle)) {
-          this.level.bottles.splice(index, 1);  // Remove the collected bottle from the level
-          this.bottleBar.increaseBottles();  // Increase the bottle count on the bottle bar
+          this.level.Bottles.splice(index, 1); // Correct array name
+          this.bottleBar.increaseBottles();    // Correct method to increase bottles
       }
   });
 }
-
-     checkThrowObject(){
-       if(this.keyboard.D){
-        let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
-        this.throwableObject.push(bottle);
-       }
-     }
-
-    checkCollisions(){
-      this.level.enemies.forEach((enemy) => {
-        if (this.character.isColliding(enemy)){
-           this.character.hit();
-           this.statusBar.setPercentage(this.character.energy);
-          
-        }
-         });
    
-    }
 
    draw() {
      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

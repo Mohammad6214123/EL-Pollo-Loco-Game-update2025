@@ -16,4 +16,6 @@ class Bottle extends MoveableObject{
        };
        this.x = Math.random() * 2000; // assign a random x-position name.
     }
+
+    
 }
