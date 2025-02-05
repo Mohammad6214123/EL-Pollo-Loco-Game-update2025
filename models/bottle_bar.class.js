@@ -47,10 +47,5 @@ class bottleBar extends DrawableObject {
 
     canAddBottle() {
         return this.percentage < 100;
-    }
-
-    render() {
-        // Drawing the bottle bar on the screen
-        this.context.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
+    }   
 }

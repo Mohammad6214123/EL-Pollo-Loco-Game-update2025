@@ -31,6 +31,7 @@ class World {
         this.checkThrowObject();
         this.checkCoinCollection();
         this.checkBottleCollection();
+        this.checkJumpOnEnemyCollision();
     }, 1000);
    }
 
@@ -67,8 +68,20 @@ checkBottleCollection() {
       if (this.character.isColliding(bottle)) {
           this.level.bottle.splice(index, 1); // Correct array name
           this.bottleBar.increasePercentage(); // Correct method to increase bottles
-          this.bottleBar.render(); // Ensure bottle bar is rendered after collection
       }
+  });
+}
+
+checkJumpOnEnemyCollision(){
+  this.level.enemies.forEach((enemy) =>{
+    if(this.character.isJumpingOn(enemy)){
+      console.log('Jumping on enemy:', enemy);
+      if (enemy instanceof  Chicken || enemy instanceof  SmallChicken){
+          enemy.hit();
+          console.log('Enemy hit:',enemy);
+      }
+      
+    }
   });
 }
 
