@@ -9,6 +9,21 @@ function init() {
 }
 
 
+function toggleFullscreen() {
+    const canvas = document.getElementById('canvas');
+    
+    if (canvas.requestFullscreen) {  // For Chrome, Edge, and other modern browsers
+        canvas.requestFullscreen();
+    } else if (canvas.webkitRequestFullscreen) { // For Chrome and Safari
+        canvas.webkitRequestFullscreen();
+    } else if (canvas.msRequestFullscreen) { // For Edge
+        canvas.msRequestFullscreen();
+    }
+}
+
+
+
+
 
 
 
