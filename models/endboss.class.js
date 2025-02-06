@@ -28,7 +28,14 @@ class Endboss extends MoveableObject{
     animate(){
         setInterval( () => {
             this.playAnimation(this.IMAGES_WALKING);
+            this.moveLeft()
       },200);
     }
+
+   moveLeft(){           // this method I have written today.
+    if(this.x > 1000){
+        this.x -=2;
+    }
+   }
 }
 

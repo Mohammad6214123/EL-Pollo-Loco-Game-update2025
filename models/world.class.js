@@ -74,11 +74,12 @@ checkBottleCollection() {
 
 checkJumpOnEnemyCollision(){
   this.level.enemies.forEach((enemy) =>{
-    if(this.character.isJumpingOn(enemy)){
+    if(this.character.isColliding(enemy)){
       console.log('Jumping on enemy:', enemy);
-      if (enemy instanceof  Chicken || enemy instanceof  SmallChicken){
+      if (enemy instanceof  Chicken || enemy instanceof  smallChicken){
           enemy.hit();
           console.log('Enemy hit:',enemy);
+
       }
       
     }
